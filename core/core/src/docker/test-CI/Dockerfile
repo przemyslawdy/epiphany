@@ -1,4 +1,8 @@
-FROM epiphanyplatform/epiphany-deploy:latest
+FROM epiphanyregistry.azurecr.io/epiphany-deploy:1640-release022
+# to be removed
+COPY core/core/src/docker/test-CI/run.sh /epiphany/core/core/src/docker/test-CI/run.sh 
+# to be removed
+COPY core/core/src/docker/test-CI/prepare_sp.sh /epiphany/core/core/src/docker/test-CI/prepare_sp.sh 
 
 RUN mkdir /tmp/keys
 
