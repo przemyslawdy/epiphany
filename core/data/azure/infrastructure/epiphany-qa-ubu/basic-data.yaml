@@ -9,12 +9,12 @@ azure:
   resource_group: "epi-qa-ubu-ci"
   location: "West Europe"
   image_offer: UbuntuServer #RHEL
-  boot_storage: "epiplaygrnd1"
+  boot_storage: "epiqaubuci"
   image_sku: 18.04-LTS #7.5
   image_publisher: Canonical #RedHat
   image_version: 18.04.201810030 #7.5.2018081519
   vm_name_prefix: "vmqaubuci"
-  create_service_principal: true
+  create_service_principal: false
 security:
   keys_directory: "/tmp/keys"
   key_file_name: id_rsa

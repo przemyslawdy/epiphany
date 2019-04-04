@@ -9,12 +9,12 @@ azure:
   resource_group: "epi-qa-rhel-ci"
   location: "West Europe"
   image_offer: RHEL #UbuntuServer
-  boot_storage: "epiplaygrnd1"
+  boot_storage: "epiqarhelci"
   image_sku: 7.5 #18.04-LTS
   image_publisher: RedHat #Canonical
   image_version: 7.5.2018081519 #18.04.201810030
   vm_name_prefix: "vmqarhelci"
-  create_service_principal: true
+  create_service_principal: false
 security:
   keys_directory: "/tmp/keys"
   key_file_name: id_rsa
