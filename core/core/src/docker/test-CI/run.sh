@@ -9,9 +9,8 @@ az login --service-principal -u $SP_CLIENT_ID -p $SP_CLIENT_SECRET --tenant $SP_
 
 function deleteGroupIfExists {
 	doesGroupExists=$(az group exists --name "$1")
-	echo "$doesGroupExists"
 	if [ "$doesGroupExists" = true ]; then
-		echo "Group $1 exists. Removing.";
+		echo "Group $1 exists. Removing...";
 		az group delete --name "$1" --yes;
 	else
 		echo "Group $1 doesn't exist. Skipping.";
@@ -24,13 +23,13 @@ deleteGroupIfExists "epi-qa-ubu-ci"
 cd  /epiphany/core
 echo
 echo 'Epiphany build for RHEL started...'
-bash epiphany -a -b -i -f infrastructure/epiphany-qa-rhel -t /infrastructure/epiphany-qa-template & PIDRHEL=$!
+#bash epiphany -a -b -i -f infrastructure/epiphany-qa-rhel -t /infrastructure/epiphany-qa-template & PIDRHEL=$!
 wait $PIDRHEL
 echo
 echo 'Epiphany build for RHEL completed'
 echo
 echo 'Epiphany build for Ubuntu started...'
-bash epiphany -a -b -i -f infrastructure/epiphany-qa-ubu -t /infrastructure/epiphany-qa-template & PIDUBU=$!
+#bash epiphany -a -b -i -f infrastructure/epiphany-qa-ubu -t /infrastructure/epiphany-qa-template & PIDUBU=$!
 wait $PIDUBU
 echo
 echo 'Epiphany build for Ubuntu completed'
