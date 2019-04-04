@@ -1,3 +1,25 @@
+mkdir -p tmp/sp
+mkdir -p core/build/azure/infrastructure/epiphany-qa-rhel
+mkdir -p core/build/azure/infrastructure/epiphany-qa-ubu
+
+echo '{
+  "appId": "{{ sp_client_id }}",
+  "displayName": "epiphany-vsts",
+  "name": "http://epiphany-vsts",
+  "password": "{{ sp_client_secret }}",
+  "tenant": "{{ sp_tenant_id }}"
+}
+' >> tmp/sp/az_ad_sp.json
+
+sed "/set -e/q" core/core/src/templates/azure/env.sh.j2 > tmp/sp/env.sh
+
+echo 'export ARM_SUBSCRIPTION_ID="{{ sp_subscription_id }}"
+export ARM_CLIENT_ID="{{ sp_client_id }}"
+export ARM_CLIENT_SECRET="{{ sp_client_secret }}"
+export ARM_TENANT_ID="{{ sp_tenant_id }}"
+' >> tmp/sp/env.sh
+
+echo "
 ---
 # Security.yaml
 
@@ -13,7 +35,7 @@ core:
         # a service_principal of your own instead of having one generated.
         # You will also need to override env.sh that contains the 'ARM_...' environment variables required.
         enable: True
-        create: True # If you want to use an existing one then set this to false
+        create: False # If you want to use an existing one then set this to false
       auth: pwd # Valid is 'pwd' and 'cert'. At this time Terraform only support 'pwd' for service principals
       # NOTE: Backend is a Terraform resource that stores the *.tfstate files used by Terraform to store state. The default
       # is to store the state file locally but this can cause issues if working in a team environment.
@@ -23,6 +45,7 @@ core:
         # The storage container is generated as '<resource_group_name>'-'terraform'
         # NOTE: Known issue with backend tf when having different VM types below when enabled! So, only one VM entry with count set should be used. Set to false for now...
         enable: False
+
 subscription_id: {{ sp_subscription_id }}
 app_name: epiphany-vsts
 app_id: {{ sp_client_id }}
@@ -30,3 +53,8 @@ tenant_id: {{ sp_tenant_id }}
 role: Contributor
 auth: {{ sp_client_secret }}
 auth_type: pwd
+" >> tmp/sp/security.yaml
+sed -i "s/{{ sp_subscription_id }}/$SP_SUBSCRIPTION_ID/g; s/{{ sp_client_id }}/$SP_CLIENT_ID/g; s/{{ sp_tenant_id }}/$SP_TENANT_ID/g; s/{{ sp_client_secret }}/$SP_CLIENT_SECRET/g" tmp/sp/*
+cp tmp/sp/* core/build/azure/infrastructure/epiphany-qa-rhel
+cp tmp/sp/* core/build/azure/infrastructure/epiphany-qa-ubu
+rm -rf tmp

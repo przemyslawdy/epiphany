@@ -1,4 +1,8 @@
 FROM epiphanyplatform/epiphany-deploy:latest
+# to be removed
+COPY core/core/src/docker/test-CI/run.sh /epiphany/core/core/src/docker/test-CI/run.sh 
+# to be removed
+COPY core/core/src/docker/test-CI/prepare_sp.sh /epiphany/core/core/src/docker/test-CI/prepare_sp.sh 
 
 RUN mkdir /tmp/keys
 
@@ -15,17 +19,5 @@ WORKDIR /epiphany/core/core/test/serverspec
 RUN bundle install
 
 WORKDIR /epiphany
-
-# RUN mkdir -p core/data/azure/infrastructure/epiphany-qa-template
-
-# RUN mkdir -p core/build/azure/infrastructure/epiphany-qa-rhel
-
-# RUN mkdir -p core/build/azure/infrastructure/epiphany-qa-ubu
-
-# COPY core/data/azure/infrastructure/epiphany-qa-template/ core/data/azure/infrastructure/epiphany-qa-template/
-
-# COPY core/data/azure/infrastructure/epiphany-qa-rhel/basic-data.yaml core/data/azure/infrastructure/epiphany-qa-rhel/basic-data.yaml
-
-# COPY core/data/azure/infrastructure/epiphany-qa-ubu/basic-data.yaml core/data/azure/infrastructure/epiphany-qa-ubu/basic-data.yaml
 
 CMD ["/epiphany/core/core/src/docker/test-CI/run.sh"]
