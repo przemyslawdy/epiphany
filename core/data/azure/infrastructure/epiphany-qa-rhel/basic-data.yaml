@@ -6,7 +6,7 @@ version: 0.2.2
 environment_name: QA-RHEL-CI
 azure:
   subscription_name: $SP_SUBSCRIPTION_ID
-  resource_group: "epi-qa-rhel-ci2"
+  resource_group: "epi-qa-rhel-ci"
   location: "West Europe"
   image_offer: RHEL #UbuntuServer
   boot_storage: "epiplaygrnd1"
