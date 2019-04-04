@@ -1,0 +1,27 @@
+---
+# Simplified datafile that you can use together with template (see README.md in this folder).
+# Change values according to your needs, start with generating ssh keys and placing them in the directory "keys_directory". Do not forget to update "keys_directory" as well.
+kind: simplified-datafile
+version: 0.2.2
+environment_name: QA-UBU-CI
+azure:
+  subscription_name: $SP_SUBSCRIPTION_ID
+  resource_group: "epi-qa-ubu-ci"
+  location: "West Europe"
+  image_offer: UbuntuServer #RHEL
+  boot_storage: "epiplaygrnd1"
+  image_sku: 18.04-LTS #7.5
+  image_publisher: Canonical #RedHat
+  image_version: 18.04.201810030 #7.5.2018081519
+  vm_name_prefix: "vmqaubuci"
+  create_service_principal: true
+security:
+  keys_directory: "/tmp/keys"
+  key_file_name: id_rsa
+  public_key_file_name: id_rsa.pub
+platform:
+  worker_vms: 2
+  kafka_vms: 1
+  postgresql_vms: 2
+  rabbitmq_vms: 2
+  

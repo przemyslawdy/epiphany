@@ -1,0 +1,7 @@
+{
+  "appId": "{{ sp_client_id }}",
+  "displayName": "epiphany-vsts",
+  "name": "http://epiphany-vsts",
+  "password": "{{ sp_client_secret }}",
+  "tenant": "{{ sp_tenant_id }}"
+}
