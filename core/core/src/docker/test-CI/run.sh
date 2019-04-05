@@ -52,5 +52,6 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 </system-out></testcase>
 </testsuite>
 ' > results/results.xml
+cat results/results.xml
 cd /epiphany/core
 /bin/bash
