@@ -1,6 +1,8 @@
 cd  /epiphany/
 git init -q
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
+echo "ls"
+ls /epiphany/core/data/azure/infrastructure
 echo "Preparing credentials"
 
 bash core/core/src/docker/test-CI/prepare_sp.sh
