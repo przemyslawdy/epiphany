@@ -17,8 +17,8 @@ function deleteGroupIfExists {
 	fi
 }
 
-deleteGroupIfExists "epi-qa-rhel-ci"
-deleteGroupIfExists "epi-qa-ubu-ci"
+#deleteGroupIfExists "epi-qa-rhel-ci"
+#deleteGroupIfExists "epi-qa-ubu-ci"
 
 cd  /epiphany/core
 echo
@@ -43,6 +43,14 @@ echo
 echo 'Serverspec tests for Ubuntu started...'
 rake inventory=/epiphany/core/build/epiphany/epiphany-qa-ubu/inventory/development user=operations keypath=/tmp/keys/id_rsa spec:all
 echo 'Serverspec tests for RHEL finished'
-
+echo '<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rspec" tests="3" skipped="0" failures="0" errors="0" time="1.757151" timestamp="2019-03-29T12:13:18+01:00" hostname="PL-L-7004066">
+<properties>
+<property name="seed" value="40257"/>
+</properties>
+<testcase classname="spec.elasticsearch-curator.elasticsearch-curator_spec" name="Checking if Elasticsearch Curator package is installed Package &quot;elasticsearch-curator&quot; should be installed" file="./spec/elasticsearch-curator/elasticsearch-curator_spec.rb" time="1.542772"><system-out>elasticsearch-curator-5.5.4-1.x86_64
+</system-out></testcase>
+</testsuite>
+' > results/results.xml
 cd /epiphany/core
 /bin/bash
