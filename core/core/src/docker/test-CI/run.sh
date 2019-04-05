@@ -36,6 +36,7 @@ echo 'Epiphany build for Ubuntu completed'
 echo
 az logout &2>/dev/null
 cd /epiphany/core/core/test/serverspec
+mkdir results
 echo 'Serverspec tests for RHEL started...'
 rake inventory=/epiphany/core/build/epiphany/epiphany-qa-rhel/inventory/development user=operations keypath=/tmp/keys/id_rsa spec:all
 echo 'Serverspec tests for RHEL finished'
