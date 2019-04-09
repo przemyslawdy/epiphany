@@ -20,4 +20,6 @@ RUN bundle install
 
 WORKDIR /epiphany
 
+RUN chmod chmod a+x /epiphany/core/core/src/docker/test-CI/run.sh
+
 CMD ["/epiphany/core/core/src/docker/test-CI/run.sh"]
