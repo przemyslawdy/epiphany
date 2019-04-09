@@ -26,7 +26,7 @@ function deleteGroupIfExists {
 cd  /epiphany/core
 echo
 echo 'Epiphany build for RHEL started...'
-bash epiphany -a -b -i -f infrastructure/epiphany-qa-rhel -t /infrastructure/epiphany-qa-template & PIDRHEL=$!
+#bash epiphany -a -b -i -f infrastructure/epiphany-qa-rhel -t /infrastructure/epiphany-qa-template & PIDRHEL=$!
 wait $PIDRHEL
 echo
 echo 'Epiphany build for RHEL completed'
