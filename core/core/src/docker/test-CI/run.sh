@@ -43,4 +43,3 @@ echo
 #rake inventory=/epiphany/core/build/epiphany/epiphany-qa-ubu/inventory/development user=operations keypath=/tmp/keys/id_rsa spec:all
 #echo 'Serverspec tests for Ubuntu finished'
 cd /epiphany/core
-/bin/bash
