@@ -1,6 +1,5 @@
 mkdir -p tmp/sp
-mkdir -p core/build/azure/infrastructure/epiphany-qa-rhel
-mkdir -p core/build/azure/infrastructure/epiphany-qa-ubu
+mkdir -p core/build/azure/infrastructure/$RESOURCE_GROUP
 
 echo '{
   "appId": "{{ sp_client_id }}",
@@ -55,6 +54,5 @@ auth: {{ sp_client_secret }}
 auth_type: pwd
 " >> tmp/sp/security.yaml
 sed -i "s/{{ sp_subscription_id }}/$SP_SUBSCRIPTION_ID/g; s/{{ sp_client_id }}/$SP_CLIENT_ID/g; s/{{ sp_tenant_id }}/$SP_TENANT_ID/g; s/{{ sp_client_secret }}/$SP_CLIENT_SECRET/g" tmp/sp/*
-cp tmp/sp/* core/build/azure/infrastructure/epiphany-qa-rhel
-cp tmp/sp/* core/build/azure/infrastructure/epiphany-qa-ubu
+cp tmp/sp/* core/build/azure/infrastructure/$RESOURCE_GROUP
 rm -rf tmp
