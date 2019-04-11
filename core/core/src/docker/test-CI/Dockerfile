@@ -1,9 +1,5 @@
 FROM epiphanyregistry.azurecr.io/epiphany-deploy:latest
 
-# to be removed
-COPY core/core/src /epiphany/core/core/src 
-COPY core/core/test/serverspec /epiphany/core/core/test/serverspec 
-#
 RUN mkdir /tmp/keys
 
 RUN ssh-keygen -q -t rsa -N '' -f /tmp/keys/id_rsa
