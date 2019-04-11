@@ -1,4 +1,4 @@
-FROM epiphanyregistry.azurecr.io/epiphany-deploy:1640-release022
+FROM epiphanyregistry.azurecr.io/epiphany-deploy:latest
 
 RUN mkdir /tmp/keys
 
