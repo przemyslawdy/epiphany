@@ -140,7 +140,11 @@ registry:2
 # applications
 jboss/keycloak:4.8.3.Final
 rabbitmq:3.7.10
+<<<<<<< HEAD
 # K8s upgrade
+=======
+# K8s upgrades
+>>>>>>> 3ac732879d199aacf280401ff14a2fc33c0aafe3
 ## v1.12.10
 k8s.gcr.io/coredns:1.2.2
 k8s.gcr.io/etcd:3.2.24
